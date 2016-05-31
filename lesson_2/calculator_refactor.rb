@@ -1,3 +1,6 @@
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
 def prompt(message)
   Kernel.puts("=> #{message}")
 end
@@ -6,7 +9,15 @@ def valid_number?(num)
   num.to_i() !=0
 end
 
-prompt("Welcome to Calculator! What's your name?")
+def integer?(input)
+  input.to_i.to_s == input
+end
+
+def number?(input)
+  integer?(input) || float?(input)
+end
+
+prompt(MESSAGES['welcome'])
 name = ''
 loop do
   name = Kernel.gets().chomp()
@@ -102,3 +113,4 @@ answer = Kernel.gets().chomp()
 end
 
 prompt("Thank you for using the best calculator in the world! Good bye!")
+end

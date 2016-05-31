@@ -1,0 +1,4 @@
+welcome: "Welcome to Calculator! What's your name?"
+valid_name: "Make sure to end a valid name."
+name: "What is your name?"
+#...rest of file ommited.
