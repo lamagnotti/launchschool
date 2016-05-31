@@ -28,7 +28,7 @@ loop do
     break
   end
 end
-prompt("Hi #{name}!")
+prompt(MESSAGES['name'])
 
 loop do # main loop
   number1 = ''
