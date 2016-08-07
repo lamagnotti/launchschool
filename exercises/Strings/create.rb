@@ -1,0 +1,2 @@
+string = String.new
+# string = ''
