@@ -1,3 +1,7 @@
-This is the LaunchSchool course work completed by me during 2016. 
+# LaunchSchool Course Folder
 
-Here you will find all neccessary files and completed projects done during that time. 
+The course folder containing any works completed while enrolled at LS.
+
+### Getting Started
+
+Inside you'll see detailed notes, a load of difficult problems I've worked through, and various completed projects in both Ruby, Rails, JavaScript, and SQL.
