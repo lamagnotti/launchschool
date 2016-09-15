@@ -110,13 +110,18 @@ class RPSGame
   def play_again?
     answer = nil
     loop do
-      puts "Would you like to play again? (y/n)"
-      answer = gets.chomp
-      break if ['y', 'n'].include? answer.downcase
-      puts "Sorry, must be y or n."
+      puts "Would you like to play again? Enter 'y' or 'n'."
+      answer = gets.chomp.downcase
+
+      break if answer == 'n'
+      if answer == 'y'
+        puts "Goodluck!"
+        break
+      end
+      puts "Hmmm...'#{answer}' doesn't look much like 'y' or 'n'. Try again!"
     end
 
-    return true if answer == 'y'
+    answer == 'y'
   end
 
   def play
