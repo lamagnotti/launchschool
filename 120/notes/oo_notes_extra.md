@@ -24,3 +24,16 @@ class Jack
   include run
 end
 ```
+
+### Misc.
+- classes group common behaviors and encapsulate state
+- the objects state is saved in an object's instance variables
+  - instance variables can hold any object
+    - i.e. data structures (arrays and hashes),
+- instance methods can operate on the instance variables
+  - typically the state is a string or a number
+
+
+
+
+
