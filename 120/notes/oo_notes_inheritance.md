@@ -77,7 +77,22 @@ end
   - from outside the class, protected methods act just like private methods
   - from inside the class, protected methods are accessible just like public methods
 
+### Method Lookup Path
+- the order in which Ruby looks for methods to invoke
+- We can call the `.ancestors` class method to see the method lookup path.
+- For our pet example earlier, the lookup path would be:
+  - [Bulldog, Dog, Pet, Object, Kernel, BasicObject]
 
+- The typical Ruby lookup path:
+  1. class itself
+  2. modules from the bottom up
+
+  # 3&4 are more looping dependent upon how many superclasses there are
+  3. superclass
+  4. superclass's modules from the bottom up
+  5. Object
+  6. Kernel
+  7. BasicObject
 
 
 
