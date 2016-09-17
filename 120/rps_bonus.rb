@@ -91,21 +91,25 @@ class Human < Player
       puts "What's your first name?"
       n = gets.chomp.capitalize
       clear_screen
-      break unless n.empty? || n.include?(' ')
+      break unless n.strip.empty?
       puts "Sorry, must enter a value."
     end
     self.name = n
   end
 
+  def display_choices
+    line
+    puts "Please press:"
+    puts "| 'r'  |  'p'  |   's'    |   'l'  | 'sp'  |"
+    puts "| for  |  for  |   for    |   for  |  for  |"
+    puts "| rock | paper | scissors | lizard | spock |"
+    line
+  end
+
   def choose
     choice = nil
     loop do
-      line
-      puts "Please press:"
-      puts "| 'r'  |  'p'  |   's'    |   'l'  | 'sp'  |"
-      puts "| for  |  for  |   for    |   for  |  for  |"
-      puts "| rock | paper | scissors | lizard | spock |"
-      line
+      display_choices
       choice = gets.chomp.downcase
       if Move::VALUES.include? choice
         break

@@ -34,6 +34,14 @@ end
   - typically the state is a string or a number
 
 
+### Truthiness
+-
+
+
+
+
+
+
 
 
 
