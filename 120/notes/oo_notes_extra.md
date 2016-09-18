@@ -32,6 +32,8 @@ end
     - i.e. data structures (arrays and hashes),
 - instance methods can operate on the instance variables
   - typically the state is a string or a number
+**A normal variable has scope only within the current context.**
+**An instance variable has scope throughout one instance of a class**
 
 
 ### Truthiness
