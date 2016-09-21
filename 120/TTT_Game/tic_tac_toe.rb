@@ -1,5 +1,21 @@
 require 'pry'
 
+module UI
+  def clear_screen
+    system('clear') || system('cls')
+  end
+
+  def line
+    puts "------------------------------------------"
+  end
+
+  def space
+    puts "                                          "
+  end
+end
+
+#------------------------------------------------------------------------------#
+
 class Board
   WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
                   [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # col
@@ -85,8 +101,13 @@ class Player
 end
 
 #------------------------------------------------------------------------------#
+#module
+
+#------------------------------------------------------------------------------#
 
 class TTTGame
+  include UI
+
   HUMAN_MARKER = 'X'
   COMPUTER_MARKER = 'O'
 
@@ -108,7 +129,7 @@ class TTTGame
   end
 
   def display_board(clear = true)
-    system 'clear' if clear
+    clear_screen if clear
     puts "You're a #{human.marker}. Computer is a #{computer.marker}."
     puts "#-----------------#"
     puts "|     |     |     |"
@@ -172,7 +193,7 @@ class TTTGame
 
   def play
     display_welcome_message
-    system 'clear'
+    clear_screen
     loop do
       display_board(false)
 
@@ -188,7 +209,7 @@ class TTTGame
       display_result
       break unless play_again?
       board.reset
-      system 'clear'
+      clear_screen
       puts "Let's play again!"
       puts ""
     end
