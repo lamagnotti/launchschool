@@ -155,3 +155,6 @@
 
 37) What kind of method is ::new?
   - Class method (meaning you can call it on a class)
+
+38) What is a protected method?
+  - Proteched methods allow access between class instances, while private methods don't. You can access the methods within the class, just not outside of the class.
