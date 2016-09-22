@@ -157,4 +157,20 @@
   - Class method (meaning you can call it on a class)
 
 38) What is a protected method?
-  - Proteched methods allow access between class instances, while private methods don't. You can access the methods within the class, just not outside of the class.
+  - Methods that can be called by any object of the class or subclass
+
+39) What is a private method?
+  - Methods that can only be called from within the calling object. You cannot access another object's private methods directly. They are INSIDE the house, and only the family members in the house can talk to eachother.
+
+40) What is this operator? <=>
+  - Compares the receiver agains another object
+  - returns -1 if the receiver is less than the other object
+  - returns 0 if the receiver is equal to the other object
+  - returns 1 if the receiver is greater than the other object
+  - if not comparable, returns nil
+
+  ex. 5 <=> 7   # => Returns -1, meaning the receiver(5) is less than the 7 object
+  ex. "joe" <=> "joe" # => Returns 0, because they're equal
+  ex. "joe" <=> 5    # => Returns nil because they're not comparable
+
+41)
