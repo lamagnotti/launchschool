@@ -51,6 +51,16 @@ end
 
 ***
 
+### SEAT Approach
+
+**4 Steps to Writing a Test**
+1) Set up the necessary objects
+2) Execute the code against the object we're testing
+3) Assert the results of the execution
+4) Tear down and clean up any lingering artifacts
+
+***
+
 ### Additional Notes
 
 - Create a test file by subclassing `MiniTest::Test`
