@@ -60,14 +60,12 @@ module Display
     case board.winning_marker
     when human.marker
       puts "You won #{human.name}!"
-      double_horiz_rule
     when computer.marker
       puts "#{computer.name} won!"
-      double_horiz_rule
     else
       puts "It's a tie!"
-      double_horiz_rule
     end
+    double_horiz_rule
   end
 
   def display_score
@@ -138,9 +136,11 @@ class Board
     WINNING_LINES.each do |line|
       squares = @squares.values_at(*line)
       marked_squares = squares.select { |value| value.marker == marker }
-      if marked_squares.count == 2
-        return @squares.select { |key, value| line.include?(key) && value.marker == Square::INITIAL_MARKER }.keys.first
+      next unless marked_squares.count == 2
+      squares = @squares.select do |key, value|
+        line.include?(key) && value.marker == Square::INITIAL_MARKER
       end
+      squares.keys.first
     end
     nil
   end
@@ -283,14 +283,10 @@ class TTTGame
     setup_game
     loop do
       display_board
-      loop do
-        current_player_moves
-        break if board.someone_won? || board.full?
-        clear_screen_and_display_board
-      end
+      gameplay
       display_result
       update_score
-      won_whole_game?
+      reset_match
       break unless play_again?
       reset
       display_play_again_message
@@ -301,6 +297,14 @@ class TTTGame
   #----------------------------------------#
 
   private
+
+  def gameplay
+    loop do
+      current_player_moves
+      break if board.someone_won? || board.full?
+      clear_screen_and_display_board
+    end
+  end
 
   def setup_game
     clear
@@ -326,7 +330,7 @@ class TTTGame
     computer.set_name
   end
 
-  def won_whole_game?
+  def reset_match
     if overall_winner?
       clear_screen_and_display_board
       display_overall_winner
@@ -335,25 +339,29 @@ class TTTGame
   end
 
   def choose_first
-    answer = ''
-    loop do
-      puts 'Please select who goes first:'
-      puts "(1) #{human.name}"
-      puts "(2) #{computer.name}"
-      puts "(3) I'm Feeling Lucky"
-      answer = gets.chomp.to_i
-      break if [1, 2, 3].include?(answer)
-      puts 'Please enter a vaild choice.'
-    end
-    if answer == 1
+    answer_prompt
+    if @answer == 1
       @current_marker = human.marker
       puts 'You are going first!'
-    elsif answer == 2
+    elsif @answer == 2
       @current_marker = computer.marker
       puts 'The computer is first!'
     else
       @current_marker = [human.marker, computer.marker].sample
       puts "Looks like #{@current_marker} is going first!"
+    end
+  end
+
+  def answer_prompt
+    @answer = ''
+    loop do
+      puts 'Please select who goes first:'
+      puts "(1) #{human.name}"
+      puts "(2) #{computer.name}"
+      puts "(3) I'm Feeling Lucky"
+      @answer = gets.chomp.to_i
+      break if [1, 2, 3].include?(@answer)
+      puts 'Please enter a vaild choice.'
     end
   end
 
