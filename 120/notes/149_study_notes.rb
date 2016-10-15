@@ -120,6 +120,12 @@ end
     - ALL instances of the class have access to it (which means we can share sensitive data between instances of the same class type)
 
 #-----------------------------------------------------------------------------#
+* Truthiness *
+
+- Logical operators are comparison operators, and will return a boolean (that is, either the true or false objects) when comparing two expressions.
+- Short circuting - stop evaluating exprssions once it can guarentee the return value
+
+#-----------------------------------------------------------------------------#
 * Random *
 
 - calling .clone on @name, returns a copy of @name instead of a reference to it
@@ -135,3 +141,6 @@ end
 - def self.slow
     @speed -= 10
   end
+
+  - Constants are accessible by instance methods
+
