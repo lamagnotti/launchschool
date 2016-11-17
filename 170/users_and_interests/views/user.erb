@@ -1,0 +1,19 @@
+<h2>Details for <%= @user_name.capitalize %>:</h2>
+
+<h4>Email address:</h4>
+<p><%= @email %></p>
+
+  <h4>Interests:</h4>
+  <ol>
+    <li><%= @interests[0].capitalize %></li>
+    <li><%= @interests[1].capitalize %></li>
+    <li><%= @interests[2].capitalize %></li>
+  </ol>
+
+<ul>
+  <% @users.each do |name, _| %>
+    <% unless name == @user_name %>
+      <li><a href="<%= name %>"><%= name %></li>
+    <% end %>
+  <% end %>
+</ul>
